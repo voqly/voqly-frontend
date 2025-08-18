@@ -28,23 +28,23 @@ export default function LandingPage() {
           <span className="text-2xl font-semibold text-blue-600">voqly</span>
         </div>
 
-        {/* Navigation */}
-        <nav className="flex space-x-16 text-blue-600 font-medium">
-          <a href="#">For Business</a>
-          <a href="#">Pricing</a>
-          <a href="#">About</a>
-          <a href="#">Use Cases</a>
-          <a href="#">Resources</a>
+        {/* Navigation - Centered */}
+        <nav className="flex items-center text-blue-600 font-medium absolute left-1/2 transform -translate-x-1/2">
+          <a href="#" className="hover:text-blue-700 transition-colors duration-200" style={{marginRight: '120px'}}>For Business</a>
+          <a href="#" className="hover:text-blue-700 transition-colors duration-200" style={{marginRight: '120px'}}>Pricing</a>
+          <a href="#" className="hover:text-blue-700 transition-colors duration-200" style={{marginRight: '120px'}}>About</a>
+          <a href="#" className="hover:text-blue-700 transition-colors duration-200" style={{marginRight: '120px'}}>Use Cases</a>
+          <a href="#" className="hover:text-blue-700 transition-colors duration-200">Resources</a>
         </nav>
 
         {/* CTAs */}
-        <div className="flex items-center space-x-4">
-          <a href="/signin" className="text-blue-600 font-medium hover:underline">Sign In</a>
-          <button className="bg-gradient-to-r from-cyan-500 to-blue-500 text-white px-4 py-2 rounded-md font-semibold shadow-sm hover:opacity-90">
+        <div className="flex items-center">
+          <a href="/signin" className="text-[#8b5cf6] font-medium hover:text-[#7c3aed] transition-colors duration-200" style={{marginRight: '20px'}}>Sign In</a>
+          <button className="bg-gradient-to-r from-[#3b82f6] to-[#6366f1] text-white px-6 py-2.5 rounded-lg font-semibold shadow-sm hover:opacity-90 transition-opacity duration-200" style={{marginRight: '20px'}}>
             Get Voqly
           </button>
-          <button className="border border-blue-500 text-blue-500 px-4 py-2 rounded-md font-semibold hover:bg-blue-50">
-            Talk to Sales
+          <button className="bg-white border border-[#6366f1] px-6 py-2.5 rounded-lg font-semibold transition-all duration-200" style={{marginRight: '20px'}}>
+            <span className="bg-gradient-to-r from-[#3b82f6] to-[#6366f1] bg-clip-text text-transparent" >Talk to Sales</span>
           </button>
         </div>
       </header>
