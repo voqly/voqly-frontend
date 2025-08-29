@@ -27,11 +27,9 @@ a:hover {
 }
 
 body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+    margin: 0;
+    min-width: 320px;
+    min-height: 100vh;
 }
 
 h1 {
@@ -58,6 +56,8 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
+.shivank { /* rules defined later */ }
+
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
@@ -69,4 +69,52 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
+}
+
+/* Marquee (logos scroller) */
+.marquee {
+  overflow: hidden;
+  position: relative;
+  -webkit-mask-image: linear-gradient(90deg, transparent, black 10%, black 90%, transparent);
+  mask-image: linear-gradient(90deg, transparent, black 10%, black 90%, transparent);
+}
+.marquee-track {
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+  width: max-content;
+  animation: marquee-left 28s linear infinite;
+}
+.marquee:hover .marquee-track {
+  animation-play-state: paused;
+}
+.marquee-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #111827; /* gray-900 */
+  opacity: 1;
+  filter: none;
+}
+.marquee-item img {
+  height: 28px;
+}
+@keyframes marquee-left {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* Scoped layout fix for sections wrapped in .shivank */
+.shivank {
+  width: 100% !important;
+  display: block !important;
+  text-align: center;
+}
+.shivank > section {
+  max-width: 72rem !important; /* 1152px ~ max-w-6xl */
+  margin-left: auto !important;
+  margin-right: auto !important;
+  padding-left: 1.5rem !important; /* px-6 */
+  padding-right: 1.5rem !important;
+  text-align: center;
 }

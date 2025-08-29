@@ -1,10 +1,4 @@
-#root {
-  max-width: 2280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
-}
-
+/* Remove Vite demo centering to allow full-width landing sections */
 body, html, #root {
   margin: 0;
   padding: 0;
@@ -39,9 +33,7 @@ body, html, #root {
   }
 }
 
-.card {
-  padding: 2em;
-}
+/* Vite demo styles removed */
 
 .read-the-docs {
   color: #888;
