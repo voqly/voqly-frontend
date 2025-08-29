@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { Button } from "./components/ui/button";
 import { Card, CardContent } from "./components/ui/card";
 import Header, { VoqlyLogo } from "./components/Header";
+import Footer from "./components/Footer";
 import { motion } from "framer-motion";
 import { Brain, Gamepad2, BarChart3, Mic, Cpu, Sparkles, Upload, CheckCircle2 } from "lucide-react";
 
@@ -38,7 +39,7 @@ export default function LandingPage() {
       <Header />
 
 {/* Hero Section */}
-<section className="px-6 py-20 md:py-32 text-center bg-gradient-to-r from-blue-50 to-blue-100">
+<section className="px-6 py-16 md:py-32 text-center bg-gradient-to-r from-blue-50 to-blue-100">
   <h1 className="text-4xl md:text-6xl font-bold leading-tight mb-6">
     Your AI-Powered <span className="text-blue-600">Speaking Coach</span>
   </h1>
@@ -48,7 +49,7 @@ export default function LandingPage() {
   <Button size="lg">Start Practicing Now</Button>
 
 {/* Full-width Hero Image */}
-<div className="w-screen h-[80vh] mt-12 -ml-[50vw] left-1/2 relative">
+<div className="w-screen h-[50vh] md:h-[80vh] mt-8 md:mt-12 -ml-[50vw] left-1/2 relative">
   <img
     src="/images/hero-demo.png"
     alt="voqly hero"
@@ -170,13 +171,13 @@ export default function LandingPage() {
       </section>
 
       {/* Demo Video */}
-      <section id="demo" className="py-20 px-6 bg-white text-center">
+      <section id="demo" className="py-16 md:py-20 px-6 bg-white text-center">
         <h2 className="text-3xl font-bold mb-6">Watch voqly in Action</h2>
         <div className="max-w-4xl mx-auto">
           <iframe
             src="https://www.youtube.com/embed/BErcHaCt5rA"
             title="Demo video"
-            className="w-full h-[60vh] rounded-xl shadow-lg"
+            className="w-full h-[40vh] md:h-[60vh] rounded-xl shadow-lg"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
           ></iframe>
@@ -285,10 +286,7 @@ export default function LandingPage() {
       </section>
       </div>
 
-      {/* Footer */}
-      <footer className="text-center py-10 text-sm text-gray-500">
-        © {new Date().getFullYear()} voqly. All rights reserved.
-      </footer>
+      <Footer />
     </div>
   );
 }
