@@ -79,7 +79,7 @@ export default function LandingPage() {
 <div className="shivank">
       {/* Features */}
       <section id="features" className="py-20 px-6 max-w-6xl mx-auto">
-        <h2 className="text-3xl font-bold text-center mb-10">Why voqly?</h2>
+        <h2 className="text-3xl font-bold text-center mb-10">Why Voqly?</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {[
             {
@@ -112,9 +112,13 @@ export default function LandingPage() {
       </section>
 
       {/* How it works */}
-      <section id="how" className="py-20 px-6 bg-gray-50">
-        <h2 className="text-3xl font-bold text-center mb-10">How it works</h2>
-        <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-6 lg:gap-8">
+      <section id="how" className="relative py-20 px-6 bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50">
+        <div className="absolute inset-0 pointer-events-none" aria-hidden>
+          <div className="absolute -top-24 -left-24 w-[28rem] h-[28rem] bg-indigo-100 rounded-full blur-3xl opacity-70"></div>
+          <div className="absolute -bottom-24 -right-24 w-[32rem] h-[32rem] bg-purple-100 rounded-full blur-3xl opacity-70"></div>
+        </div>
+        <h2 className="relative text-3xl font-extrabold text-center mb-10 tracking-tight text-gray-900">How it works</h2>
+        <div className="relative max-w-6xl mx-auto grid md:grid-cols-3 gap-6 lg:gap-8">
           {[
             {
               step: 1,
@@ -140,39 +144,66 @@ export default function LandingPage() {
               Icon: Sparkles,
               AccentIcon: BarChart3,
             },
-          ].map(({ step, title, desc, bullets, Icon, AccentIcon }, i) => (
-            <motion.div
-              key={i}
-              className="group bg-white rounded-2xl p-6 lg:p-7 shadow-sm border border-gray-100 flex flex-col min-h-[280px] transition hover:shadow-md"
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 0.5, delay: i * 0.05 }}
-            >
-              <div className="flex items-center gap-3">
-                <div className="h-12 w-12 rounded-xl bg-gradient-to-br from-blue-50 to-indigo-50 text-blue-600 flex items-center justify-center ring-1 ring-blue-200">
-                  <Icon className="h-6 w-6" />
+          ].map(({ step, title, desc, bullets, Icon, AccentIcon }, i) => {
+            const topBarClass = i === 0
+              ? "bg-gradient-to-r from-cyan-500 to-blue-500"
+              : i === 1
+              ? "bg-gradient-to-r from-fuchsia-500 to-pink-500"
+              : "bg-gradient-to-r from-amber-500 to-orange-500";
+            const iconWrapClass = i === 0
+              ? "text-cyan-600 bg-cyan-50"
+              : i === 1
+              ? "text-fuchsia-600 bg-pink-50"
+              : "text-amber-600 bg-amber-50";
+            const badgeClass = i === 0
+              ? "text-cyan-700 bg-cyan-50"
+              : i === 1
+              ? "text-fuchsia-700 bg-pink-50"
+              : "text-amber-700 bg-amber-50";
+            const bulletIconClass = i === 0
+              ? "text-cyan-600"
+              : i === 1
+              ? "text-fuchsia-600"
+              : "text-amber-600";
+            return (
+              <motion.div
+                key={i}
+                className="group bg-white/90 backdrop-blur rounded-2xl p-6 lg:p-7 shadow-md border border-gray-100 flex flex-col min-h-[280px] transition-transform duration-300 hover:-translate-y-1 hover:shadow-xl"
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ duration: 0.5, delay: i * 0.05 }}
+              >
+                <div className={`h-1 w-full rounded-full ${topBarClass} mb-4`}></div>
+                <div className="flex items-center gap-3">
+                  <div className={`h-12 w-12 rounded-xl ${iconWrapClass} flex items-center justify-center shadow-sm group-hover:shadow-md`}>
+                    <Icon className="h-6 w-6" />
+                  </div>
+                  <span className={`text-[11px] font-semibold uppercase tracking-wider px-2 py-0.5 rounded-full ${badgeClass}`}>Step {step}</span>
                 </div>
-                <span className="text-xs font-semibold uppercase tracking-wider text-blue-600">Step {step}</span>
-              </div>
-              <h3 className="text-xl font-semibold mt-3">{title}</h3>
-              <p className="text-gray-600 mt-1">{desc}</p>
-              <ul className="mt-4 space-y-2 text-sm text-gray-700">
-                {bullets.map((b, bi) => (
-                  <li key={bi} className="flex items-start gap-2">
-                    <AccentIcon className="h-4 w-4 text-blue-500 mt-0.5" />
-                    <span>{b}</span>
-                  </li>
-                ))}
-              </ul>
-            </motion.div>
-          ))}
+                <h3 className="text-xl font-bold mt-3 text-gray-900">{title}</h3>
+                <p className="text-gray-700 mt-1">{desc}</p>
+                <ul className="mt-4 space-y-2 text-sm text-gray-700">
+                  {bullets.map((b, bi) => (
+                    <li key={bi} className="flex items-start gap-2">
+                      <AccentIcon className={`h-4 w-4 mt-0.5 ${bulletIconClass}`} />
+                      <span>{b}</span>
+                    </li>
+                  ))}
+                </ul>
+              </motion.div>
+            );
+          })}
+        </div>
+        <div className="relative mt-10 flex items-center justify-center gap-4">
+          {/* <a href="#demo" className="inline-flex items-center px-5 py-2.5 rounded-lg bg-white text-indigo-700 border border-indigo-200 shadow-sm hover:shadow transition">Watch demo</a> */}
+          {/* <a href="/signup" className="inline-flex items-center px-5 py-2.5 rounded-lg bg-gradient-to-r from-blue-500 to-indigo-500 text-white shadow-sm hover:opacity-90 transition">Start practicing</a> */}
         </div>
       </section>
 
       {/* Demo Video */}
       <section id="demo" className="py-16 md:py-20 px-6 bg-white text-center">
-        <h2 className="text-3xl font-bold mb-6">Watch voqly in Action</h2>
+        <h2 className="text-3xl font-bold mb-6">Watch Voqly in Action</h2>
         <div className="max-w-4xl mx-auto">
           <iframe
             src="https://www.youtube.com/embed/BErcHaCt5rA"
@@ -265,12 +296,12 @@ export default function LandingPage() {
         <div className="max-w-4xl mx-auto space-y-6">
           {[
             {
-              q: "Is voqly really free?",
+              q: "Is Voqly really free?",
               a: "Yes, we offer a completely free tier to get you started."
             },
             {
               q: "Do I need to install anything?",
-              a: "Nope! voqly works right in your browser."
+              a: "Nope! Voqly works right in your browser."
             },
             {
               q: "Is my data secure?",

@@ -9,6 +9,7 @@ import ResetPassword from './pages/ResetPassword.jsx'
 import VerifyEmail from './pages/VerifyEmail.jsx'
 import Dashboard from './pages/Dashboard.jsx'
 import PricingPage from './pages/Pricing.jsx'
+import LearnMore from './pages/LearnMore.jsx'
 import BusinessGTM from './pages/subpages/BusinessGTM.jsx'
 import LearningDevelopment from './pages/subpages/LearningDevelopment.jsx'
 import PartnerEnablement from './pages/subpages/PartnerEnablement.jsx'
@@ -30,6 +31,10 @@ import SampleSpeeches from './pages/subpages/SampleSpeeches.jsx'
 import TrustCenter from './pages/subpages/TrustCenter.jsx'
 import { AuthProvider } from './context/AuthContext.jsx'
 import RequireAuth from './components/RequireAuth.jsx'
+import Privacy from './pages/Privacy.jsx'
+import Terms from './pages/Terms.jsx'
+import Cookies from './pages/Cookies.jsx'
+import Contact from './pages/Contact.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
@@ -38,6 +43,7 @@ createRoot(document.getElementById('root')).render(
         <Routes>
           <Route path="/" element={<LandingPage />} />
           <Route path="/pricing" element={<PricingPage />} />
+          <Route path="/learn-more" element={<LearnMore />} />
           {/* For Business */}
           <Route path="/business/gtm-enablement" element={<BusinessGTM />} />
           <Route path="/business/learning-development" element={<LearningDevelopment />} />
@@ -66,6 +72,10 @@ createRoot(document.getElementById('root')).render(
           <Route path="/signup" element={<SignUpPage />} />
           <Route path="/reset-password" element={<ResetPassword />} />
           <Route path="/verify-email" element={<VerifyEmail />} />
+          <Route path="/privacy" element={<Privacy />} />
+          <Route path="/terms" element={<Terms />} />
+          <Route path="/cookies" element={<Cookies />} />
+          <Route path="/contact" element={<Contact />} />
           <Route path="/dashboard" element={<RequireAuth><Dashboard /></RequireAuth>} />
         </Routes>
       </BrowserRouter>
