@@ -51,7 +51,7 @@ export default function PricingPage() {
         <div className="mt-6 text-center text-sm">
           <span className="inline-flex items-center gap-2 text-blue-600 font-semibold">
             <span className="text-yellow-500">✦</span>
-            See details on <a href="#" className="underline">how to get reimbursed by your employer</a>
+            See details on  <a href="#" className="underline">how to get reimbursed by your employer</a>
             <span className="text-yellow-500">✦</span>
           </span>
         </div>
