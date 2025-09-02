@@ -118,3 +118,21 @@ button:focus-visible {
   padding-right: 1.5rem !important;
   text-align: center;
 }
+
+/* Global improvements: ensure pages don't touch screen edges and scroll to visible below fixed header */
+html { scroll-padding-top: 110px; }
+@media (max-width: 440px) {
+  html { scroll-padding-top: 90px; }
+}
+
+/* Add comfortable horizontal padding across common content containers */
+main, section {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+@media (min-width: 768px) {
+  main, section {
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+  }
+}
