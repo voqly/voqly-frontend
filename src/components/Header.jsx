@@ -1,9 +1,10 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
+import PromoBanner from "./PromoBanner";
 
 export function VoqlyLogo({ className = "" }) {
   return (
-    <svg className={className} width="30" height="30" viewBox="0 0 100 100" fill="none">
+    <svg className={className} width="45" height="45" viewBox="0 0 100 100" fill="none">
       <defs>
         <linearGradient id="voqlyGradient" x1="0" y1="0" x2="100" y2="100">
           <stop offset="0%" stopColor="#06b6d4" />
@@ -20,14 +21,17 @@ export function VoqlyLogo({ className = "" }) {
 export default function Header() {
   const navigate = useNavigate();
   return (
-    <header className="flex justify-between items-center px-8 py-4 bg-white shadow-sm border-b border-gray-200">
-      <Link to="/" className="flex items-center space-x-2 hover:opacity-90 transition-opacity" aria-label="Go to homepage">
-        <VoqlyLogo />
-        <span className="text-2xl font-semibold text-blue-600">voqly</span>
-      </Link>
+    <>
+    <PromoBanner />
+    <header className="sticky top-0 z-50 flex justify-between items-center px-16 py-[25px] bg-white shadow-lg">
+      <div className="flex items-center">
+        <Link to="/" className="flex items-center space-x-2 hover:opacity-90 transition-opacity" aria-label="Go to homepage">
+          <VoqlyLogo /> Voqly
+          <span className="text-2xl font-extrabold bg-gradient-to-r from-red-500 via-yellow-500 to-green-500 bg-clip-text text-transparent">voqly</span>
+        </Link>
 
-      <nav className="flex items-center text-blue-600 font-medium absolute left-1/2 transform -translate-x-1/2">
-        <div className="relative group" style={{marginRight: '120px'}}>
+        <nav className="flex items-center text-blue-600 font-medium ml-6">
+        <div className="relative group" style={{marginRight: '60px', marginLeft: '60px'}}>
           <Link to="#" className="hover:text-blue-700 transition-colors duration-200 whitespace-nowrap">For Business</Link>
           <div className="hidden group-hover:block absolute left-0 top-full mt-1 z-50 opacity-100">
             <div className="relative">
@@ -51,8 +55,8 @@ export default function Header() {
             </div>
           </div>
         </div>
-        <Link to="/pricing" className="hover:text-blue-700 transition-colors duration-200" style={{marginRight: '120px'}}>Pricing</Link>
-        <div className="relative group" style={{marginRight: '120px'}}>
+        <Link to="/pricing" className="hover:text-blue-700 transition-colors duration-200" style={{marginRight: '60px'}}>Pricing</Link>
+        <div className="relative group" style={{marginRight: '60px'}}>
           <Link to="/about/team" className="hover:text-blue-700 transition-colors duration-200 whitespace-nowrap">About</Link>
           <div className="hidden group-hover:block absolute left-0 top-full mt-1 z-50 opacity-100">
             <div className="relative">
@@ -82,7 +86,7 @@ export default function Header() {
             </div>
           </div>
         </div>
-        <div className="relative group" style={{marginRight: '120px'}}>
+        <div className="relative group" style={{marginRight: '60px'}}>
           <Link to="/use-cases/conversation-roleplays" className="hover:text-blue-700 transition-colors duration-200 whitespace-nowrap">Use Cases</Link>
           <div className="hidden group-hover:block absolute left-0 top-full mt-1 z-50 opacity-100">
             <div className="relative">
@@ -106,7 +110,7 @@ export default function Header() {
             </div>
           </div>
         </div>
-        <div className="relative group">
+        <div className="relative group" style={{marginRight: '60px'}}>
           <Link to="/resources/blog" className="hover:text-blue-700 transition-colors duration-200 whitespace-nowrap">Resources</Link>
           <div className="hidden group-hover:block absolute left-0 top-full mt-1 z-50 opacity-100">
             <div className="relative">
@@ -137,13 +141,14 @@ export default function Header() {
           </div>
         </div>
       </nav>
+      </div>
 
       <div className="flex items-center">
         <Link to="/signin" className="text-[#8b5cf6] font-medium hover:text-[#7c3aed] transition-colors duration-200" style={{marginRight: '20px'}}>Sign In</Link>
         <button onClick={() => navigate('/signup')} className="bg-gradient-to-r from-[#3b82f6] to-[#6366f1] text-white px-6 py-2.5 rounded-lg font-semibold shadow-sm hover:opacity-90 transition-opacity duration-200" style={{marginRight: '20px'}}>
           Get Voqly
         </button>
-        <div className="relative">
+        <div className="relative" style={{marginRight: '20px'}}>
           <button className="bg-white border border-[#6366f1] px-6 py-2.5 rounded-lg font-semibold transition-all duration-200">
             <a href="tel:9860246306" className="bg-gradient-to-r from-[#3b82f6] to-[#6366f1] bg-clip-text text-transparent">Talk to Sales</a>
           </button>
@@ -161,6 +166,7 @@ export default function Header() {
         </div>
       </div>
     </header>
+    </>
   );
 }
 
