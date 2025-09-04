@@ -25,10 +25,10 @@ export default function PricingPage() {
   const price = (monthly, annually) => (annual ? annually : monthly);
 
   return (
-    <div className="bg-white text-gray-900 min-h-screen">
+    <div className="bg-white text-gray-900 min-h-screen app-theme">
       <Header />
 
-      <section className="max-w-7xl mx-auto px-6 py-12">
+      <section className="max-w-7xl mx-auto px-6 py-12 app-theme">
         <h1 className="text-3xl md:text-4xl font-extrabold tracking-tight text-center">
           Choose a plan that best fits your speaking goals
         </h1>

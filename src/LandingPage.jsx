@@ -4,6 +4,7 @@ import { Button } from "./components/ui/button";
 import { Card, CardContent } from "./components/ui/card";
 import Header, { VoqlyLogo } from "./components/Header";
 import Footer from "./components/Footer";
+import VoqlyHero from "./components/VoqlyHero";
 import { motion } from "framer-motion";
 import { Brain, Gamepad2, BarChart3, Mic, Cpu, Sparkles, Upload, CheckCircle2 } from "lucide-react";
 
@@ -39,31 +40,27 @@ export default function LandingPage() {
       <Header />
 
 {/* Hero Section */}
-<section className="px-6 py-16 md:py-32 text-center bg-gradient-to-r from-blue-50 to-blue-100">
-  <h1 className="text-4xl md:text-6xl font-bold leading-tight mb-6">
-    Your AI-Powered <span className="text-blue-600">Speaking Coach</span>
-  </h1>
-  <p className="text-lg md:text-xl mb-8 text-gray-700 max-w-2xl mx-auto">
-    Voqly helps you speak with confidence. AI-driven insights, real-time feedback, and gamified practice make public speaking easier than ever.
-  </p>
-  <Button size="lg">Start Practicing Now</Button>
+<VoqlyHero />
 
-{/* Full-width Hero Image */}
-<div className="w-screen h-[50vh] md:h-[80vh] mt-8 md:mt-12 -ml-[50vw] left-1/2 relative">
-  <img
-    src="/images/hero-demo.png"
-    alt="voqly hero"
-    className="w-screen h-full object-contain"
-  />
-</div>
-
+{/* Legacy full-width hero image retained below new hero */}
+<section class="relative left-1/2 -translate-x-1/2 w-screen mt-4 md:mt-8">
+  <div class="relative h-[60vh] md:h-[80vh] overflow-hidden">
+    <div class="pointer-events-none absolute inset-y-0 left-0 w-[15vw] bg-gradient-to-r from-violet-600 to-transparent z-20"></div>
+    <div class="pointer-events-none absolute inset-y-0 right-0 w-[15vw] bg-gradient-to-l from-blue-600 to-transparent z-20"></div>
+    <img
+      src="/images/hero-demo.png"
+      alt="voqly hero"
+      class="absolute inset-0 z-10 w-full h-full object-cover"
+    />
+  </div>
 </section>
 
 
 
 
+
       {/* Trusted By */}
-      <section className="py-10 px-6 bg-white">
+      <section className="px-6 bg-white pt-20 pb-10">
         <h3 className="text-xl text-gray-500 mb-6 text-center">Trusted by professionals at</h3>
         <div className="marquee">
           <div className="marquee-track">

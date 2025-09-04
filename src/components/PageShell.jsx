@@ -6,7 +6,7 @@ export default function PageShell({ title, subtitle, children, heroAdornment }) 
     <div className="bg-white text-gray-900 min-h-screen">
       <Header />
 
-      <section className="relative overflow-hidden">
+      <section className="relative overflow-hidden app-theme">
         <div className="absolute inset-0 pointer-events-none" aria-hidden>
           <div className="absolute -top-24 -right-24 w-[28rem] h-[28rem] bg-blue-50 rounded-full blur-3xl"></div>
           <div className="absolute -bottom-24 -left-24 w-[32rem] h-[32rem] bg-cyan-50 rounded-full blur-3xl"></div>
@@ -18,7 +18,7 @@ export default function PageShell({ title, subtitle, children, heroAdornment }) 
         </div>
       </section>
 
-      <main className="max-w-6xl mx-auto px-6 pb-20">
+      <main className="max-w-6xl mx-auto px-6 pb-20 app-theme">
         {children}
       </main>
     </div>

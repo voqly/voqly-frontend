@@ -7,7 +7,7 @@ export default function SignInPage() {
     <div className="bg-white text-gray-900 min-h-screen">
       <Header />
 
-      <section className="relative overflow-hidden">
+      <section className="relative overflow-hidden app-theme">
         <div className="absolute inset-0 pointer-events-none" aria-hidden>
           <div className="absolute -top-20 -right-20 w-96 h-96 bg-blue-100 rounded-full blur-3xl"></div>
           <div className="absolute -bottom-20 -left-20 w-[32rem] h-[32rem] bg-cyan-100 rounded-full blur-3xl"></div>
@@ -15,7 +15,7 @@ export default function SignInPage() {
 
         <div className="relative max-w-6xl mx-auto px-6 py-16">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div className="text-left">
+            <div className="text-left app-theme">
               <h1 className="text-4xl font-bold leading-tight mb-4">
                 Sign in to <span className="text-blue-600">voqly</span>
               </h1>

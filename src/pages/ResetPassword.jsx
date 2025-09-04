@@ -31,7 +31,7 @@ export default function ResetPassword() {
   }
 
   return (
-    <div className="bg-white text-gray-900 min-h-screen">
+    <div className="bg-white text-gray-900 min-h-screen app-theme">
       <Header />
       <div className="max-w-lg mx-auto px-6 py-16">
         <Card className="rounded-2xl border border-gray-200">

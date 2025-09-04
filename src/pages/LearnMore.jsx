@@ -7,14 +7,14 @@ export default function LearnMore() {
     <div className="bg-white text-gray-900 min-h-screen">
       <Header />
 
-      <section className="bg-[#0b0f2a] text-white">
+      <section className="bg-[#0b0f2a] text-white app-theme">
         <div className="max-w-6xl mx-auto px-6 py-16">
           <h1 className="text-3xl md:text-5xl font-extrabold">How teams accelerate with Voqly</h1>
           <p className="mt-3 text-indigo-200 max-w-2xl">Real outcomes from AI roleplays and targeted coaching — faster onboarding, measurable skill lift, and confident communication.</p>
         </div>
       </section>
 
-      <main className="max-w-6xl mx-auto px-6 py-12 grid md:grid-cols-3 gap-8">
+      <main className="max-w-6xl mx-auto px-6 py-12 grid md:grid-cols-3 gap-8 app-theme">
         {[{
           title: "Ramp faster",
           desc: "Cut onboarding time with realistic roleplays and shared rubrics.",
