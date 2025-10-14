@@ -3,6 +3,7 @@ import Header from "../components/Header";
 import { Button } from "../components/ui/button";
 import { auth } from "../lib/firebase";
 import { sendEmailVerification } from "firebase/auth";
+import { authService } from "../lib/authService";
 import { useNavigate } from "react-router-dom";
 
 export default function VerifyEmail() {
@@ -15,7 +16,10 @@ export default function VerifyEmail() {
     setMessage("");
     setError("");
     try {
-      if (auth.currentUser) {
+      if (authService.isBackend()) {
+        await authService.resendVerification();
+        setMessage("Verification email sent again. Please check your inbox.");
+      } else if (auth.currentUser) {
         await sendEmailVerification(auth.currentUser);
         setMessage("Verification email sent again. Please check your inbox.");
       }
@@ -29,7 +33,14 @@ export default function VerifyEmail() {
     setMessage("");
     setError("");
     try {
-      if (auth.currentUser) {
+      if (authService.isBackend()) {
+        const me = await authService.me();
+        if (me?.isVerified || me?.emailVerified) {
+          navigate("/dashboard");
+          return;
+        }
+        setError("Not verified yet. Please check your inbox.");
+      } else if (auth.currentUser) {
         await auth.currentUser.reload();
         if (auth.currentUser.emailVerified) {
           navigate("/dashboard");

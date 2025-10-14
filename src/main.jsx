@@ -5,6 +5,7 @@ import './index.css'
 import LandingPage from './LandingPage.jsx'
 import SignInPage from './pages/SignIn.jsx'
 import SignUpPage from './pages/SignUp.jsx'
+import SignUpEmail from './pages/SignUpEmail.jsx'
 import ResetPassword from './pages/ResetPassword.jsx'
 import VerifyEmail from './pages/VerifyEmail.jsx'
 import Dashboard from './pages/Dashboard.jsx'
@@ -70,6 +71,7 @@ createRoot(document.getElementById('root')).render(
           <Route path="/resources/trust-center" element={<TrustCenter />} />
           <Route path="/signin" element={<SignInPage />} />
           <Route path="/signup" element={<SignUpPage />} />
+          <Route path="/signup/email" element={<SignUpEmail />} />
           <Route path="/reset-password" element={<ResetPassword />} />
           <Route path="/verify-email" element={<VerifyEmail />} />
           <Route path="/privacy" element={<Privacy />} />

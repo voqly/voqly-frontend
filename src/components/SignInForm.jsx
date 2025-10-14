@@ -10,6 +10,7 @@ import {
   browserSessionPersistence,
 } from "firebase/auth";
 import { auth, googleProvider, facebookProvider } from "../lib/firebase";
+import { authService } from "../lib/authService";
 
 export default function SignInForm({ standalone = true }) {
   const [email, setEmail] = useState("");
@@ -62,11 +63,16 @@ export default function SignInForm({ standalone = true }) {
     if (!validate()) return;
     setIsSubmitting(true);
     try {
-      await withPersistence();
-      await signInWithEmailAndPassword(auth, email, password);
+      if (authService.isBackend()) {
+        await authService.login({ email, password });
+      } else {
+        await withPersistence();
+        await signInWithEmailAndPassword(auth, email, password);
+      }
       navigate("/");
     } catch (err) {
-      setAuthError(mapAuthErrorMessage(err?.code));
+      const code = err?.code || err?.data?.code || err?.status;
+      setAuthError(mapAuthErrorMessage(code));
     } finally {
       setIsSubmitting(false);
     }
@@ -76,9 +82,14 @@ export default function SignInForm({ standalone = true }) {
     setAuthError("");
     setIsSubmitting(true);
     try {
-      await withPersistence();
-      await signInWithPopup(auth, googleProvider);
-      navigate("/");
+      if (authService.isBackend()) {
+        window.location.href = (import.meta.env.VITE_API_BASE_URL || "http://localhost:4000") + "/auth/google";
+        return;
+      } else {
+        await withPersistence();
+        await signInWithPopup(auth, googleProvider);
+        navigate("/");
+      }
     } catch (err) {
       setAuthError(mapAuthErrorMessage(err?.code));
     } finally {
@@ -90,9 +101,14 @@ export default function SignInForm({ standalone = true }) {
     setAuthError("");
     setIsSubmitting(true);
     try {
-      await withPersistence();
-      await signInWithPopup(auth, facebookProvider);
-      navigate("/");
+      if (authService.isBackend()) {
+        window.location.href = (import.meta.env.VITE_API_BASE_URL || "http://localhost:4000") + "/auth/facebook";
+        return;
+      } else {
+        await withPersistence();
+        await signInWithPopup(auth, facebookProvider);
+        navigate("/");
+      }
     } catch (err) {
       setAuthError(mapAuthErrorMessage(err?.code));
     } finally {

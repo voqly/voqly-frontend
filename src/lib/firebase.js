@@ -1,5 +1,5 @@
 import { initializeApp, getApps, getApp } from "firebase/app";
-import { getAuth, GoogleAuthProvider, FacebookAuthProvider } from "firebase/auth";
+import { getAuth, GoogleAuthProvider, FacebookAuthProvider, OAuthProvider } from "firebase/auth";
 
 const apiKey = import.meta.env.VITE_FIREBASE_API_KEY || "demo-api-key";
 const authDomain = import.meta.env.VITE_FIREBASE_AUTH_DOMAIN || "demo-auth-domain";
@@ -25,5 +25,8 @@ export const googleProvider = new GoogleAuthProvider();
 googleProvider.setCustomParameters({ prompt: "select_account" });
 
 export const facebookProvider = new FacebookAuthProvider();
+
+// Microsoft (Azure AD) provider via generic OAuthProvider("microsoft.com")
+export const microsoftProvider = new OAuthProvider("microsoft.com");
 
 
