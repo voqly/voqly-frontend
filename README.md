@@ -5,7 +5,8 @@ A React + Vite frontend for Voqly with routing, Firebase auth (optional backend 
 ## Quick start
 
 ```bash
-# Node 18+ is recommended
+# Node 20.19+ or 22.12+ is required (Vite 7 requirement)
+# Recommended: Node 22.19.0
 npm install
 
 # Start dev server (http://localhost:5173)
@@ -19,8 +20,20 @@ npm run preview
 ```
 
 ## Prerequisites
-- Node.js 18 or newer
-- npm 9+ (or use pnpm/yarn if you prefer – scripts assume npm)
+- Node.js 20.19+ or 22.12+ (recommended: 22.19.0)
+- npm 9+
+
+If you use `nvm`:
+```bash
+nvm install 22.19.0
+nvm use 22.19.0
+```
+
+If you use `n` (requires sudo once on macOS):
+```bash
+npm i -g n
+sudo n 22.19.0
+```
 
 ## Project structure
 - `src/main.jsx`: App entry with `react-router-dom` routes and `AuthProvider`
@@ -34,20 +47,11 @@ npm run preview
 - `tailwind.config.js`: Tailwind config
 
 ## Environment variables
-Create a `.env.local` (not committed) in the project root. All variables must be prefixed with `VITE_` for Vite to expose them to the client.
-
-Minimum recommended vars:
+Create a `.env.local` in the project root. Variables must be prefixed with `VITE_`.
 
 ```bash
-# API base URL for backend calls
 VITE_API_BASE_URL=http://localhost:4000
-
-# Choose auth provider: "firebase" (default) or "backend"
-# - firebase: uses Firebase client auth via AuthContext
-# - backend: uses API endpoints in authService (requires working backend)
 VITE_AUTH_PROVIDER=firebase
-
-# Firebase config (required if using firebase auth)
 VITE_FIREBASE_API_KEY=your-api-key
 VITE_FIREBASE_AUTH_DOMAIN=your-project.firebaseapp.com
 VITE_FIREBASE_PROJECT_ID=your-project-id
@@ -56,21 +60,25 @@ VITE_FIREBASE_STORAGE_BUCKET=your-project-id.appspot.com
 VITE_FIREBASE_MESSAGING_SENDER_ID=your-sender-id
 ```
 
-Notes:
-- Sensible demo fallbacks exist in code, but real auth needs valid values.
-- When switching to `backend` auth, implement `/auth/login`, `/auth/register`, `/auth/logout`, `/auth/me`, `/auth/resend-verification` on your API, as used in `src/lib/authService.js`.
+## Local domain (app.localhost)
+- In development, clicking Sign In/Sign Up will redirect to `http://app.localhost:<port>/signin` and `/signup` automatically when running on localhost.
+- You can also start Vite bound to this host:
+```bash
+npm run dev -- --host app.localhost --port 5173 --strictPort
+# open http://app.localhost:5173
+```
 
 ## Scripts
-- `npm run dev`: Start Vite dev server on port 5173 (see `vite.config.js`)
+- `npm run dev`: Start Vite dev server on port 5173
 - `npm run build`: Production build into `dist/`
 - `npm run preview`: Preview the built app locally
-- `npm run lint`: Run ESLint (see `eslint.config.js`)
+- `npm run lint`: Run ESLint
 
 ## Routing
 Defined in `src/main.jsx` using `react-router-dom`. The dashboard route is protected via `src/components/RequireAuth.jsx`.
 
 ## Styling
-Tailwind CSS is configured. Refer to `tailwind.config.js` and `src/index.css` for base styles. Utility-first classes are used throughout components.
+Tailwind CSS is configured. Refer to `tailwind.config.js` and `src/index.css`.
 
 ## Module alias
 `@` resolves to `src/` (see `vite.config.js`). Example:
@@ -79,13 +87,19 @@ import Header from '@/components/Header'
 ```
 
 ## Deployment
-- Build with `npm run build` and deploy the `dist/` directory to your static host (e.g., Vercel, Netlify, S3+CloudFront).
-- Ensure production env vars are set on your hosting platform (the `VITE_` vars must be available at build time).
+- Build with `npm run build` and deploy the `dist/` directory.
+- Ensure production env vars are provided at build time.
 
 ## Troubleshooting
-- Auth not working (Firebase): Verify all `VITE_FIREBASE_*` values and that the auth providers are enabled in Firebase console. Update authorized domains.
-- API calls failing: Check `VITE_API_BASE_URL`, CORS settings, and that your backend sets/accepts cookies if using session auth (`credentials: 'include'`).
-- Port conflicts: Change dev server port in `vite.config.js`.
+- Dev server not starting with Vite 7 and Node 20.9.0:
+  - Upgrade Node to 20.19+ or 22.12+ (`nvm install 22.19.0 && nvm use 22.19.0`)
+- Cannot reach http://localhost:5173 while server runs:
+  - Ensure it’s bound to the right host: `npm run dev -- --host 0.0.0.0 --port 5173 --strictPort`
+  - Try `http://127.0.0.1:5173` and `http://app.localhost:5173`
+- Port in use:
+  - `lsof -tiTCP:5173 -sTCP:LISTEN | xargs -r kill -9`
+- Xcode license blocks git:
+  - `sudo xcodebuild -license accept`
 
 ## License
 MIT
