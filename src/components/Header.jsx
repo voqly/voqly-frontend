@@ -144,15 +144,18 @@ export default function Header() {
       </div>
 
       <div className="flex items-center">
-        <Link to="/signin" className="text-[#8b5cf6] font-medium hover:text-[#7c3aed] transition-colors duration-200" style={{marginRight: '20px'}}>Sign In</Link>
         <button
           onClick={() => {
-            const appOrigin = import.meta.env.VITE_APP_ORIGIN;
-            if (appOrigin) {
-              window.location.href = new URL('/signup', appOrigin).toString();
-            } else {
-              navigate('/signup');
-            }
+            window.location.href = new URL('/signin', window.location.origin).toString();
+          }}
+          className="text-[#8b5cf6] font-medium hover:text-[#7c3aed] transition-colors duration-200"
+          style={{marginRight: '20px'}}
+        >
+          Sign In
+        </button>
+        <button
+          onClick={() => {
+            window.location.href = new URL('/signup', window.location.origin).toString();
           }}
           className="bg-gradient-to-r from-[#3b82f6] to-[#6366f1] text-white px-6 py-2.5 rounded-lg font-semibold shadow-sm hover:opacity-90 transition-opacity duration-200"
           style={{marginRight: '20px'}}
