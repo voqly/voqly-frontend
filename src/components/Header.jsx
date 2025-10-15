@@ -146,7 +146,12 @@ export default function Header() {
       <div className="flex items-center">
         <button
           onClick={() => {
-            window.location.href = new URL('/signin', window.location.origin).toString();
+            const { hostname, port, protocol } = window.location;
+            const isLocal = hostname === 'localhost' || hostname === '127.0.0.1' || hostname.endsWith('.localhost');
+            const targetOrigin = isLocal
+              ? `${protocol}//app.localhost${port ? `:${port}` : ''}`
+              : window.location.origin;
+            window.location.href = new URL('/signin', targetOrigin).toString();
           }}
           className="text-[#8b5cf6] font-medium hover:text-[#7c3aed] transition-colors duration-200"
           style={{marginRight: '20px'}}
@@ -155,7 +160,12 @@ export default function Header() {
         </button>
         <button
           onClick={() => {
-            window.location.href = new URL('/signup', window.location.origin).toString();
+            const { hostname, port, protocol } = window.location;
+            const isLocal = hostname === 'localhost' || hostname === '127.0.0.1' || hostname.endsWith('.localhost');
+            const targetOrigin = isLocal
+              ? `${protocol}//app.localhost${port ? `:${port}` : ''}`
+              : window.location.origin;
+            window.location.href = new URL('/signup', targetOrigin).toString();
           }}
           className="bg-gradient-to-r from-[#3b82f6] to-[#6366f1] text-white px-6 py-2.5 rounded-lg font-semibold shadow-sm hover:opacity-90 transition-opacity duration-200"
           style={{marginRight: '20px'}}
